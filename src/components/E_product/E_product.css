@@ -1,4 +1,15 @@
 /* necessary to give position: relative to parent. */
+
+.Errandmake{
+    position: relative;
+    margin: 20px 10px 10px 10px;
+    background-color: white;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
 input[type="text"] {
     font: 8px/8px 'Muli', sans-serif;
     color: #333;
@@ -6,6 +17,15 @@ input[type="text"] {
     box-sizing: border-box;
     letter-spacing: 1px;
 }
+
+input[type="text"] {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
 
 :focus {
     outline: none;
@@ -17,14 +37,6 @@ input[type="text"] {
     margin: 20px;
     margin-top: 5px;
     position: relative;
-}
-
-input[type="text"] {
-    font: 15px/24px "Lato", Arial, sans-serif;
-    color: #333;
-    width: 100%;
-    box-sizing: border-box;
-    letter-spacing: 1px;
 }
 
 .effect-1 {
@@ -99,28 +111,4 @@ input[type="text"] {
     margin-top: 10px;
     border-radius: 8px;
     border-color: #182b58;
-}
-
-.button {
-    width: 150px;
-    height: 40px;
-    margin-left: 20px;
-    margin-top: 10px;
-    color: #fff;
-    background: #182b58;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
-    transition: 0.3s;
-}
-
-.button:focus {
-    outline: 0;
-}
-
-.button:hover {
-    background: rgba(0, 79, 255, 0.9);
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
 }

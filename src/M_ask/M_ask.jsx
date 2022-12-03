@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import styles from "./M_ask.module.css";
-import Button from "../components/Button/Button";
 import Header from "../components/Header/Header";
 import { RiQuestionFill } from "react-icons/ri";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "@material-ui/core";
+import BtnSubmit from "../components/Button/Button"
+import { Link } from "react-router-dom";
 
 export default function M_ask() {
   const [ask, setAsk] = useState("");
+  const [open, setOpen] = useState(false);
+
   const handleChange = (e) => {
     setAsk(e.target.value);
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(ask);
-    alert("문의가 정상적으로 접수되었습니다.");
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
   return (
     <>
@@ -30,7 +45,7 @@ export default function M_ask() {
               onChange={handleChange}
             ></textarea>
             <div className={styles.submit}>
-              <Button>문의하기</Button>
+              <BtnSubmit>문의하기</BtnSubmit>
             </div>
           </div>
         </form>
@@ -39,6 +54,25 @@ export default function M_ask() {
           <span>문의 전화번호 : 010-1234-5678</span>
         </footer>
       </div>
+      <div>
+        <Dialog
+          open={open}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"문의 완료"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description"></DialogContentText>
+            문의가 정상적으로 접수되었습니다. 감사합니다.
+          </DialogContent>
+          <DialogActions>
+            <Link to = "/H_mypage">
+              <Button onClick={handleClose}>확인</Button>
+            </Link>
+          </DialogActions>
+        </Dialog>
+      </div>
+      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

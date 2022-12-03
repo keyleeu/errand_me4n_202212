@@ -59,9 +59,20 @@
     height: 30px;
 }
 
+.button_row{
+    display: flex;
+    justify-content: center;
+}
+
 .button {
-    width: 120px;
-    height: 40px;
+    float: left;
+    margin-right: 10px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    margin-top: 10px;
     color: #fff;
     background: #182b58;
     font-size: 16px;
@@ -79,4 +90,11 @@
     background: rgba(0, 79, 255, 0.9);
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
+}
+
+.footer {
+    margin-top: 50px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
 }

@@ -10,34 +10,22 @@ import Header from "../components/Header/Header";
 import Radio from "../components/Radio/Radio";
 import RadioGroup from "../components/Radio/RadioGroup";
 import useUser from "../components/hooks/use-user";
-
+import { Link } from "react-router-dom";
 
 export default function M_profile() {
-  const [loading, error, user] = useUser();
+  const user = useUser();
   const [form, setForm] = useState({
     nickname: `${user.nickname}`,
     phone_number: `${user.phone_number}`,
     gender: user.gender,
   });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(form.gender)
-    data.append("gender", form.gender);
-    const value = Object.fromEntries(data.entries());
-    let model = {
-      method: 'PUT',
-      body: JSON.stringify(value),
-      headers: {
-        Authorization: localStorage.getItem("email"),
-        'Content-Type': 'application/json'
-      }
-    };
-    fetch(`/api/member`, model)
-        .then((res) => res.json())
-        .then((res) => {
-          window.location.reload();
-        })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //업데이트 제대로 되었는지 확인용
+    console.log(`
+    닉네임: ${form.nickname}
+    전화번호: ${form.phone_number}
+    성별: ${form.gender}로 수정완료`);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,18 +74,22 @@ export default function M_profile() {
             </label>
             <RadioGroup value={form.gender} onChange={handleChange}>
               <Radio name="gender" value="1">
-                남자
+                남성
               </Radio>
               <Radio name="gender" value="2">
-                여자
+                여성
               </Radio>
             </RadioGroup>
           </div>
         </div>
-        <div className={styles.submit}>
-          <BtnSubmit>수정하기</BtnSubmit>
-        </div>
       </form>
+      <div className={styles.submit}>
+        <Link to = "/H_mypage">
+          <BtnSubmit>수정하기</BtnSubmit>
+        </Link>
+        </div>
+      <footer>&copy;{new Date().getFullYear()} Errand App</footer>
+      {/*footer css는 mypage 참조 */}
     </>
   );
 }

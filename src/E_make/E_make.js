@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './E_make.css'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function E_make() {
     const [category, setCategory] = useState([]);
@@ -39,59 +40,65 @@ function E_make() {
 
 
     return (
-        <div className='Errandmake'>
-            <form onSubmit={handleSavePost}>
-                <div class="container">
-                    <h3 class="main">상품명</h3>
-                    <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="  Placeholder Text" name="product" />
-                        <span class="focus-border"></span>
+        <div>
+            <div className='Errandmake'>
+                <form onSubmit={handleSavePost}>
+                    <div class="container">
+                        <h3 class="main">상품명</h3>
+                        <div class="col-3">
+                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="product" />
+                            <span class="focus-border"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="container">
-                    <h3 class="main">카테고리</h3>
-                    <select class="selectbox" name="category">
-                        {
-                          category.map(
-                            t => {
-                                return (
-                                  <option value={t.id}>{t.context}</option>
-                                )
+                    <div class="container">
+                        <h3 class="main">카테고리</h3>
+                        <select class="selectbox" name="category">
+                            {
+                            category.map(
+                                t => {
+                                    return (
+                                    <option value={t.id}>{t.context}</option>
+                                    )
+                                }
+                            )
                             }
-                          )
-                        }
-                    </select>
-                </div>
-                <div class="container">
-                    <h3 class="main">상품 비용</h3>
-                    <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="  Placeholder Text" name="cost" />
-                        <span class="focus-border"></span>
+                        </select>
                     </div>
-                </div>
-                <div class="container">
-                    <h3 class="main">심부름 비용</h3>
-                    <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="  Placeholder Text" name="fee" />
-                        <span class="focus-border"></span>
+                    <div class="container">
+                        <h3 class="main">상품 비용</h3>
+                        <div class="col-3">
+                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="cost" />
+                            <span class="focus-border"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="container">
-                    <h3 class="main">심부름 내용</h3>
-                    <div >
-                        <textarea class="textarea" placeholder="심부름 내용을 입력해주세요" name="contents"></textarea>
+                    <div class="container">
+                        <h3 class="main">심부름 비용</h3>
+                        <div class="col-3">
+                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="fee" />
+                            <span class="focus-border"></span>
+                        </div>
                     </div>
-                </div>
-                <div className="container">
-                    <h3 className="main">거래 장소</h3>
-                    <div>
-                        <textarea className="textarea" placeholder="거래할 장소를 입력해주세요" name="destination"></textarea>
+                    <div class="container">
+                        <h3 class="main">심부름 내용</h3>
+                        <div >
+                            <textarea class="textarea" placeholder="심부름 내용을 입력해주세요" name="contents"></textarea>
+                        </div>
                     </div>
-                </div>
-                <p><input type="submit" class="button" value="등록"></input></p>
-            </form>
-        </div >
-
+                    <div className="container">
+                        <h3 className="main">거래 장소</h3>
+                        <div>
+                            <textarea className="textarea" placeholder="거래할 장소를 입력해주세요" name="destination"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div >
+            <div className='button_row'>
+                <Link to = "/home">
+                    <div className="button">등록</div>
+                </Link>
+            </div>
+            <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>
+        </div>
     );
 }
 
